@@ -5,7 +5,7 @@ buildscript {
         maven { url = "https://repo.spongepowered.org/maven" }
     }
     dependencies {
-        classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "3.+", changing: true
+        classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "6.0+", changing: true
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
@@ -31,7 +31,7 @@ sourceSets {
 }
 
 minecraft {
-    mappings channel: mappings_channel, version: mappings_version
+    mappings channel: 'snapshot', version: '20201028-1.16.3'
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -111,17 +111,13 @@ repositories {
 }
 
 dependencies {
-    minecraft([
-            group  : "${forge_group}",
-            name   : "forge",
-            version: "${minecraft_version}-${forge_version}"
-    ])
+    minecraft 'net.minecraftforge:forge:1.16.5-36.0.46'
 
     runtimeOnly fg.deobf("curse.maven:curios-309927:3275653")
     runtimeOnly fg.deobf("curse.maven:curio-of-undying-316873:3308969")
 
-    compile fg.deobf("curse.maven:obfuscate-289380:3336021")
-    compile fg.deobf("curse.maven:mrcrayfishs-gun-mod-289479:3224957")
+    implementation fg.deobf("curse.maven:obfuscate-289380:3336021")
+    implementation fg.deobf("curse.maven:mrcrayfishs-gun-mod-289479:3224957")
 
     //runtimeOnly fg.deobf("curse.maven:epic-fight-mod-405076:3281689")
     //runtimeOnly fg.deobf("curse.maven:damage-tint-434182:3203478")
