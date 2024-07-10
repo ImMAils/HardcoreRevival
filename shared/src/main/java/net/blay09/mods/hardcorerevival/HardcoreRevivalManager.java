@@ -55,12 +55,12 @@ public class HardcoreRevivalManager {
                 Team team = player.getTeam();
                 if (team != null && team.getDeathMessageVisibility() != Team.Visibility.ALWAYS) {
                     if (team.getDeathMessageVisibility() == Team.Visibility.HIDE_FOR_OTHER_TEAMS) {
-                        server.getPlayerList().broadcastSystemToTeam(player, source.getDeathMessage());
+                        server.getPlayerList().broadcastSystemToTeam(player, source.getLocalizedDeathMessage(player));
                     } else if (team.getDeathMessageVisibility() == Team.Visibility.HIDE_FOR_OWN_TEAM) {
-                        server.getPlayerList().broadcastSystemToAllExceptTeam(player, source.getDeathMessage());
+                        server.getPlayerList().broadcastSystemToAllExceptTeam(player, source.getLocalizedDeathMessage(player));
                     }
                 } else {
-                    server.getPlayerList().broadcastSystemMessage(source.getDeathMessage(), false); 
+                    server.getPlayerList().broadcastSystemMessage(source.getLocalizedDeathMessage(player), false); 
                 }
             }
         }
